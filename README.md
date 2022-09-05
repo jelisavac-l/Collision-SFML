@@ -1,8 +1,11 @@
 # Collision Detection SFML
 
-Tests for different ways of collision detection for other projects.
-
+Tests for different ways of collision detection for other projects.\
+[![Generic badge](https://img.shields.io/badge/Build-Failing-red.svg)](https://shields.io/)
 ## Log
+
+### 06.09.2022.
+[+] Added background and started testing collision
 
 ### 05.09.2022.
 Initial commits.\
