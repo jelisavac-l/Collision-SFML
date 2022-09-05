@@ -27,6 +27,23 @@ int main()
     playerTextureBad.loadFromFile("assets/PTBad.png");
     player.setTexture(&playerTextureGood);
 
+    //Background
+    sf::RectangleShape background(sf::Vector2f(1280.0f, 720.0f));
+    sf::Texture backgroundTexture;
+    backgroundTexture.loadFromFile("assets/bp.png");
+    background.setTexture(&backgroundTexture);
+
+    //Collision objects array
+    sf::RectangleShape object1(sf::Vector2f(25.0f, 25.0f));
+    sf::RectangleShape object2(sf::Vector2f(25.0f, 25.0f));
+    sf::RectangleShape object3(sf::Vector2f(25.0f, 25.0f));
+
+    object1.setPosition(sf::Vector2f(0.0f, 0.0f));
+    object2.setPosition(sf::Vector2f(640.0f, 142.0f));
+    object3.setPosition(sf::Vector2f(1200.0f, 256.0f));
+    
+
+
     //Deltatime
     float deltaTime = 0.0f;
     sf::Clock clock;
@@ -90,6 +107,13 @@ int main()
 		//Drawing & displaying DON'T FORGET TO PUT EVERY ELEMENT HERE!
 		
         window.clear();
+        window.draw(background);
+        
+        //It looks like I can't pass an array as an argument to draw();
+       window.draw(object1);
+       window.draw(object2);
+       window.draw(object3);
+
         window.draw(player);
         window.display();
     }
