@@ -1,6 +1,6 @@
 # Collision Detection SFML
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)\
-Tests for different ways of collision detection for other projects.\
+Tests for different ways of collision detection for other projects.
 ## Log
 
 ### 06.09.2022.
