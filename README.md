@@ -5,7 +5,9 @@ Tests for different ways of collision detection for other projects.\
 ## Log
 
 ### 06.09.2022.
-[+] Added background and started testing collision
+[+] Added *WORKING* collision detection\
+[+] Added collision objects with textures\
+[+] Added background
 
 ### 05.09.2022.
 Initial commits.\

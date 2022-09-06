@@ -1,8 +1,10 @@
 //This is not a big project so all the OPP stuff is unnecessary
+//EDIT (2nd day into the project): it is necessary and i am not as smart as i thaught :(
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include "Collider.hpp"
 
 // Function definitions
 
@@ -34,13 +36,15 @@ int main()
     background.setTexture(&backgroundTexture);
 
     //Collision objects array
-    sf::RectangleShape object1(sf::Vector2f(25.0f, 25.0f));
-    sf::RectangleShape object2(sf::Vector2f(25.0f, 25.0f));
-    sf::RectangleShape object3(sf::Vector2f(25.0f, 25.0f));
-
-    object1.setPosition(sf::Vector2f(0.0f, 0.0f));
-    object2.setPosition(sf::Vector2f(640.0f, 142.0f));
-    object3.setPosition(sf::Vector2f(1200.0f, 256.0f));
+    Collider *cols[5];
+    float posX = 0, posY = 0;
+    for(int i = 0; i < 5; i++)
+    {    
+        cols[i] = new Collider(sf::Vector2f(posX, posY));
+        std::cout << "Collider created with coordinates: " << posX << " " << posY << "\n";
+        posX += 256.0f;
+        posY += 144.0f;
+    }
     
 
 
@@ -70,9 +74,10 @@ int main()
         {
             if (evnt.type == sf::Event::Closed)
                 window.close();
-            
-            if(evnt.type == sf::Event::KeyPressed)
-            {
+                
+
+                /*
+                //Test for texture change (Press Tab)
                 if(evnt.key.code == sf::Keyboard::Tab)
                 {
                     good = !good;
@@ -81,10 +86,55 @@ int main()
                         case true: player.setTexture(&playerTextureGood); click.play(); break;
                         case false: player.setTexture(&playerTextureBad); click.play(); break;     
                     }
-                }
-            }
+                }*/
 
         }
+
+        //Collision detection
+
+        /*
+
+        Final decision is that while player object intersects with any of collison objects
+        variable numberOfCols gets an id of that col. object, and if that number is
+        different than 0, it must mean that collision is happening.
+
+        If i try to do it in a for loop, one object would trigger as positive while all
+        others would trigger as negative and that will make the whole process loop
+        as it gets both positive signal from colliding object and negative signals from
+        all the other non-colliding objects.
+
+        I feel like a genius for now :)
+        
+        */
+        int numberOfCols = 0;
+        for (size_t i = 0; i < 5; i++)
+                {
+                    if(cols[i]->getColliderBody().getGlobalBounds().intersects(player.getGlobalBounds()))
+                    {
+                        numberOfCols = i+1; // Must be +1 because if it collides with cols[0], it won't react
+                    }             
+                }
+
+                if(numberOfCols != 0)
+                {
+                    if(good == true){
+                            good = false;
+                            click.play();
+                       }
+                }
+                else
+                {
+                if(good == false)
+                {
+                    good = true;
+
+                }
+                }
+                switch(good)
+                        {
+                        case true: player.setTexture(&playerTextureGood); break;
+                        case false: player.setTexture(&playerTextureBad); break;     
+                        }
 
         //Movement
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -108,12 +158,11 @@ int main()
 		
         window.clear();
         window.draw(background);
+        for (size_t i = 0; i < 5; i++)
+        {
+            cols[i]->drawCollider(&window);
+        }
         
-        //It looks like I can't pass an array as an argument to draw();
-       window.draw(object1);
-       window.draw(object2);
-       window.draw(object3);
-
         window.draw(player);
         window.display();
     }
