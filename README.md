@@ -1,6 +1,7 @@
 # Collision Detection SFML
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Tests for different ways of collision detection for other projects.
 ## Log
 
