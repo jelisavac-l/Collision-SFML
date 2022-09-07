@@ -1,5 +1,6 @@
 # Collision Detection SFML
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)\
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 Tests for different ways of collision detection for other projects.
 ## Log
 
@@ -12,3 +13,4 @@ Tests for different ways of collision detection for other projects.
 Initial commits.\
 [+] Added a rectangle shape that moves on WASD and has 2 faces (press TAB)\
 [+] Added a sound for detection
+

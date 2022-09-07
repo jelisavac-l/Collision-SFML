@@ -117,24 +117,24 @@ int main()
 
                 if(numberOfCols != 0)
                 {
-                    if(good == true){
-                            good = false;
-                            click.play();
-                       }
+                    if(good == true)
+                    {
+                        good = false;
+                        click.play();
+                    }
                 }
                 else
                 {
-                if(good == false)
-                {
-                    good = true;
-
-                }
+                    if(good == false)
+                    {
+                        good = true;
+                    }
                 }
                 switch(good)
-                        {
+                    {
                         case true: player.setTexture(&playerTextureGood); break;
                         case false: player.setTexture(&playerTextureBad); break;     
-                        }
+                    }
 
         //Movement
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
